@@ -18,6 +18,13 @@ router.post("/", validateObj, (req, resp) => {
 
 // SHOW route (search for id key value)
 router.get("/:id", (req, resp) => {
+    const idValue = req.params.id
+    const obj = data.find(({id}) => idValue === id )
+    obj ? resp.status(200).json(obj) : resp.status(404).redirect("/*")
+})
+
+// DELETE ROUTE
+router.delete("/:id", (req, resp) => {
     
 })
 
