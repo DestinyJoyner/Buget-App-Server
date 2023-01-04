@@ -13,7 +13,7 @@ router.get("/", (req, resp) => {
 router.post("/", validateObj, (req, resp) => {
     const idValue = uuidv4()
     data.push({["id"]:idValue, ...req.body})
-    resp.status(200).json(data.at(-1))
+    resp.status(200).json(data[data.length-1])
 })
 
 // SHOW route (search for id key value)
@@ -25,6 +25,18 @@ router.get("/:id", (req, resp) => {
 
 // DELETE ROUTE
 router.delete("/:id", (req, resp) => {
+    const idValue = req.params.id
+    const index = data.findIndex(({id}) => idValue === id )
+    console.log(index)
+    if(index !== -1){
+        const deletedObj = data.splice(index,1)
+        resp.status(200).json(deletedObj)
+    }
+    else {
+        resp.status(404).json({
+            Error: "Invalid id Value"
+        })
+    }
     
 })
 
