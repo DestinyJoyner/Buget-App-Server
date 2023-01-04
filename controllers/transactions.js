@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const { v4: uuidv4 } = require('uuid')
 const data = require("../models/data.js")
-const {validateObj} = require("../models/validations.js")
+const {validateObj, validatePut} = require("../models/validations.js")
 
 // get data route
 router.get("/", (req, resp) => {
@@ -27,7 +27,6 @@ router.get("/:id", (req, resp) => {
 router.delete("/:id", (req, resp) => {
     const idValue = req.params.id
     const index = data.findIndex(({id}) => idValue === id )
-    console.log(index)
     if(index !== -1){
         const deletedObj = data.splice(index,1)
         resp.status(200).json(deletedObj)
@@ -36,8 +35,21 @@ router.delete("/:id", (req, resp) => {
         resp.status(404).json({
             Error: "Invalid id Value"
         })
+    } 
+})
+
+// PUT (update/edit) route
+router.put("/:id", validatePut, (req, resp) => {
+    const idValue = req.params.id
+    const obj = data.find(({id}) => idValue === id )
+    if(obj){
+        obj.concat(req.body)
+        resp.status(200).json(obj)
     }
-    
+    else{
+        resp.status(404).redirect("/*")
+    }
+
 })
 
 
