@@ -43,8 +43,9 @@ router.put("/:id", validatePut, (req, resp) => {
     const idValue = req.params.id
     const obj = data.find(({id}) => idValue === id )
     if(obj){
-        obj.concat(req.body)
-        resp.status(200).json(obj)
+        const editedObj = {...obj, ...req.body}
+        // obj.concat(req.body)
+        resp.status(200).json(editedObj)
     }
     else{
         resp.status(404).redirect("/*")
