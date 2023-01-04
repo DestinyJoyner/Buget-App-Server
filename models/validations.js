@@ -8,17 +8,21 @@ const validateObj = (req, resp, next) => {
     const category = req.body.category
 
     // Check that incoming object doesn't have foreign keys
-    const acceptedKeys = Object.keys(data)
+    const acceptedKeys = Object.keys(data[0])
+
+   let invalidKey;
     for (let key in req.body){
         if(!acceptedKeys.includes(key)){
-            resp.status(404).json({
-                Error: "Please Check Request Body For Incorrect Keys"
-            })
+           invalidKey = key
         }
-
+    }
+    if(invalidKey){
+        resp.status(404).json({
+        Error: `${invalidKey} is an Incorrect Property`
+    })
     }
     // Check that incoming obj has all accepted keys
-    if(!item || !amount || !date || !from || !category){
+    else if(!item || !amount || !date || !from || !category){
         resp.status(404).json({
             Error: "Please Check Request Body For Missing or Incomplete Values"
         })
