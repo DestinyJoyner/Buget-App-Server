@@ -8,7 +8,7 @@ app.use("/transactions", require("./controllers/transactions.js"))
 
 // Routes
 app.get("/", (req, resp) => {
-    resp.status(200).send("Budget App Server")
+    resp.status(200).send("<h1>Budget App Server</h1><p>endpoints: /transactions")
 })
 
 app.get("*", (req, resp) => {
