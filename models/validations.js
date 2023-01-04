@@ -1,5 +1,6 @@
 const data = require("./data.js")
 
+
 const validateObj = (req, resp, next) => {
     const item = req.body.itemName
     const amount = req.body.amount
