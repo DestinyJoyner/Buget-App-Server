@@ -7,6 +7,7 @@ module.exports = [
         category: ""    
     },
     {
+        id: "1234567",
         itemName: "coffee",
         amount: 2,
         date: "Jun 3 2022", 
