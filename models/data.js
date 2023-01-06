@@ -9,8 +9,8 @@ module.exports = [
     {
         id: "1234567",
         itemName: "coffee",
-        amount: 2,
-        date: "Jun 3 2022", 
+        amount: -2,
+        date: "2023-01-02", 
         from: "Destiny", 
         category: "Misc"    
     }
