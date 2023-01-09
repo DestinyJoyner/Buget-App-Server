@@ -48,8 +48,7 @@ router.put("/:id", validatePut, (req, resp) => {
         resp.status(200).json(data[objIndex])
     }
     else{
-        // resp.status(404).redirect("/*")
-        resp.json(`back end delete path error`)
+        resp.status(404).redirect("/*")
     }
 
 })
