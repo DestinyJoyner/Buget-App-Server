@@ -27,10 +27,9 @@ router.get("/:id", (req, resp) => {
 router.delete("/:id", (req, resp) => {
     const idValue = req.params.id
     const index = data.findIndex(({id}) => idValue === id )
-    console.log(index)
     if(index !== -1){
         const deletedObj = data.splice(index,1)
-        resp.status(200).json(deletedObj)
+        resp.status(200)
     }
     else {
         resp.status(404).json({
@@ -49,7 +48,8 @@ router.put("/:id", validatePut, (req, resp) => {
         resp.status(200).json(data[objIndex])
     }
     else{
-        resp.status(404).redirect("/*")
+        // resp.status(404).redirect("/*")
+        resp.json(`back end delete path error`)
     }
 
 })
