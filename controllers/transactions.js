@@ -29,7 +29,7 @@ router.delete("/:id", (req, resp) => {
     const index = data.findIndex(({id}) => idValue === id )
     if(index !== -1){
         const deletedObj = data.splice(index,1)
-        resp.status(200)
+        resp.status(200).json(deletedObj)
     }
     else {
         resp.status(404).json({
