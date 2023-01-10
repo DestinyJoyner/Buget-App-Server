@@ -8,10 +8,10 @@ module.exports = [
     },
     {
         id: "1234567",
-        itemName: "coffee",
+        itemName: "Buy This Dev a Coffee?",
         amount: -2,
         date: "2023-01-02", 
-        from: "Destiny", 
+        from: "You", 
         category: "Misc"    
     }
 ]
