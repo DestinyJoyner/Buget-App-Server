@@ -44,7 +44,8 @@ router.put("/:id", validatePut, (req, resp) => {
     const objIndex = data.findIndex(({id})=> idValue === id)
     
     if(objIndex !== -1){
-        data[objIndex] = {...data[objIndex], ...req.body}
+        data[objIndex] = req.body
+        // data[objIndex] = {...data[objIndex], ...req.body}
         resp.status(200).json(data[objIndex])
     }
     else{
